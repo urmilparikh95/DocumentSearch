@@ -1,0 +1,7 @@
+.change-icon > .fa + .fa,
+.change-icon:hover > .fa {
+    display: none;
+}
+.change-icon:hover > .fa + .fa {
+    display: inherit;
+}

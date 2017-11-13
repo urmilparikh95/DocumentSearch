@@ -1,0 +1,55 @@
+<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="navbar-header" style="height: 60px">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" rel="home" href="/prj1"><i class="fa fa-dashcube fa-2x" aria-hidden="true"> Document Search</i></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" ng-model="name">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit" ng-click="omi(name)"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12">
+    <div ng-show="document_master.length > 0" ng-repeat="data in document_master">
+        <div class="col-sm-2">
+            <div class="col-sm-12 padding-none card-1" style="background-color:#d9edf7; margin: 10px 0px;font-family: Calibri;">
+                <center>
+                    <div class="card-block">
+                        <h2 class="card-title">{{data.document_name}}</h2>
+                    </div>
+                    <hr style="border-color: black">
+                    <img src="{{data.document_thumbnail_url}}" width="90%" height="150" style="padding-top: 5px">
+                    <br>
+                    <br>
+                    <p class="card-text" style="font-size: 20px" ng-init="count=$index" ng-click="ok(count)"><a>Details..</a></p>
+                </center>
+                <span class="change-icon">
+                    <a href="{{data.document_url}}" target="_blank"><i class="fa fa-download fa-2x" aria-hidden="true" style="margin-left: 43%;"></i>
+                    <!--i class="fa fa-download fa-2x fa-inverse" aria-hidden="true" style="margin-left: 43%;"></i--></a>
+                </span>
+                <p style="font-size:13px; color: grey; width: 100%;" align="right">
+                    last modified:  {{data.document_date}}</p>
+            </div>
+        </div>
+    </div>
+    <div ng-show="home.length <= 0">
+        <div class="col-sm-3">
+            No Data Found
+        </div>
+    </div>
+</div>

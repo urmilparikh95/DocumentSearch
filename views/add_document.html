@@ -1,0 +1,85 @@
+<div class="col-sm-12">
+    <form name="document_master_form" role="form" class="col-sm-12 form-horizontal">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="col-sm-12" style="border: 1px solid #adadad; background-color: #999;">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <div class="upload-file-border" ngf-select="uploadFile($files)" ngf-multiple="false">
+                        <div class="col-sm-12 " style="height: 300px;">
+                            <div>
+                                <img ngf-src="document_master.document_cover_img[0]" style="width: 100%;height: 300px;" ng-show="document_master.document_cover_img[0]!=null" ngf-accept="'image/*'" ngf-max-size='2000000'>
+                                <div style="text-align: center; margin-top: 50%;">
+                                    <i ng-hide="document_master.document_cover_img[0]!=null" class="fa fa-plus"></i>
+                                    <p ng-hide="document_master.document_cover_img[0]!=null">Add Cover Image</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+
+            <div class="col-sm-12 common-padding-top" style="background-color: white !important; color: #0e113d;">
+                <button type="file"  class="btn btn-info" ngf-select ng-model="document_master.document" ngf-multiple="false" >
+                    Upload Document...
+                </button>
+                <span>{{document_temp_name}}</span>
+            </div>
+
+            <div class="col-sm-12 card-1 common-padding-top" style="background-color: white !important; color: #0e113d;">
+                <div class="col-sm-12">
+                    <label>Document Name *</label>
+                </div>
+                <div class="col-sm-12">
+                    <input id="document_name" maxlength="50" class="form-control" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Please Enter Document Name')"  ng-model="document_master.document_name" name="document_name" placeholder="Document Name" type="text"  required />
+                    <span ng-show="document_master_form.document_name.$dirty &amp;&amp; document_master_form.document_name.$invalid" class="help-inline ng-hide error_color">*Invalid Document Name</span>
+                </div>
+            </div>
+            <div class="col-sm-12 card-1 common-padding-top" style="background-color: white !important; color: #0e113d;">
+                <div class="col-sm-12">
+                    <label>Document Format *</label>
+                </div>
+                <div class="col-sm-12">
+                    <input id="document_format" maxlength="50" class="form-control" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Please Enter Document Format')"  ng-model="document_master.document_format" name="document_format" placeholder="Document Format" type="text"  required />
+                    <span ng-show="document_master_form.document_format.$dirty &amp;&amp; document_master_form.document_format.$invalid" class="help-inline ng-hide error_color">*Invalid Document Format</span>
+                </div>
+            </div>
+            <div class="col-sm-12 card-1 common-padding-top" style="background-color: white !important; color: #0e113d;">
+                <div class="col-sm-12 ">
+                    <label>Document Author *</label>
+                </div>
+                <div class="col-sm-12 ">
+                    <input id="document_author" maxlength="50" class="form-control" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Please Enter Document Name')"  ng-model="document_master.document_author" name="document_author" placeholder="Document Author" type="text"  required />
+                    <span ng-show="document_master_form.document_author.$dirty &amp;&amp; document_master_form.document_author.$invalid" class="help-inline ng-hide error_color">*Invalid Author Name</span>
+                </div>
+            </div>
+
+            <div class="col-sm-12 card-1">
+                <label class="col-sm-12"><br>Document Tags: </label>
+                <div class="col-sm-12">
+                    <select style="width: 100%;" class="form-control" ng-model="document_master.document_tag"
+                            multiple="multiple"
+                            ng-options="data.tag_name as data.tag_name for data in tags">
+                    </select>
+                </div>
+                <div class="col-sm-12">
+                    <label class="col-md-12"><br> Selected Tags:</label>
+                    <div class="col-md-12">
+                            <span ng-repeat="tag_name in document_master.document_tag  track by $index" class="label label-warning"
+                                  style="margin-right: 2px;"> {{ tag_name }} </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12 card-1" style="background-color: white !important; color: #0e113d; height: 65px; padding: 15px;">
+                <div class="col-sm-12">
+                    <button class="btn pull-right btn-save" style="margin-top: 0px; width: 100px;" ng-click="save_details(document_master)" data-ng-disabled="document_master_form.$invalid">Create</button>
+                    <button class="btn pull-right btn-cancel" ng-click="go_back()">Cancel</button>
+                    <small class="pull-right error_color" style="padding-right: 15px;">{{error_message}}</small>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,39 @@
+<div class="col-sm-12">
+    <h1 style="font-family: Calibri;text-align: center">List of Documents</h1>
+    <div ng-show="document_master.length > 0" ng-repeat="data in document_master">
+        <div class="col-sm-2">
+            <div class="col-sm-12 padding-none card-1" style="background-color:#d9edf7; margin: 10px 0px;font-family: Calibri;">
+                <center>
+                    <div class="card-block">
+                         <h2 class="card-title">{{data.document_name}}</h2>
+                    </div>
+                    <hr style="border-color: black">
+                <img src="{{data.document_thumbnail_url}}" width="90%" height="150" style="padding-top: 5px">
+                    <br>
+                    <br>
+                    <p class="card-text" style="font-size: 20px" ng-init="count=$index" ng-click="ok(count)"><a>Details..</a></p>
+                </center>
+                <span class="change-icon">
+                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="margin-left: 21%;"></i>
+                    <i class="fa fa-pencil-square-o fa-2x fa-inverse" aria-hidden="true" style="margin-left: 21%;" ng-init="count=$index" ng-click="op(count)"></i>
+                </span>
+                <span class="change-icon">
+                <i class="fa fa-trash fa-2x" aria-hidden="true"  style="padding-left: 23%;"></i>
+                    <i class="fa fa-trash fa-2x fa-inverse" aria-hidden="true"  style="padding-left: 23%;" ng-init="count=$index" ng-click="om(count)"></i>
+                </span>
+                <p style="font-size:13px; color: grey; width: 100%;" align="right">
+                    last modified:  {{data.document_date}}</p>
+            </div>
+        </div>
+    </div>
+    <div ng-show="document_master.length <= 0">
+        <div class="col-sm-3">
+            No Data Found
+        </div>
+    </div>
+</div>
+<div class="right-corder-container">
+    <button class="right-corder-container-button" ng-click="add_new_document()">
+        <span class="short-text">+</span>
+    </button>
+</div>
